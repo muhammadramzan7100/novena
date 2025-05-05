@@ -1,0 +1,219 @@
+/* profile about  */
+  .line {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #8B0000, #FF4444);
+    border-radius: 2px;
+    margin: 1.5rem auto;
+    margin: 20px;
+  }
+  .profile-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border: 3px solid #8B0000;
+    box-shadow: 0 0.5rem 1rem rgba(139, 0, 0, 0.15) !important;
+  }
+  
+  .divider {
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent 0%, #8B0000 50%, transparent 100%);
+    margin: 0 15px;
+  } 
+  
+  .review-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #8B0000, #FF4444);
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(45deg, #8B0000, #FF4444);
+  }
+  
+  @media (max-width: 768px) {
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-width: 2px;
+    }
+  
+    .review-circle {
+      width: 80px;
+      height: 80px;
+      font-size: 1.2rem;
+    }
+  
+    h3.display-6 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .line {
+      width: 60%;
+    }
+    
+    .profile-img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+    /* vedio slider */
+  .video-carousel-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .video-carousel {
+    position: relative;
+    overflow: hidden;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  .carousel-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  .video-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    border: none;
+    border-radius: 12px;
+  }
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(161, 0, 0, 0.85);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  .carousel-control:hover {
+    background: #a10000;
+    transform: translateY(-50%) scale(1.1);
+  }
+  .carousel-control.prev { left: 15px; }
+  .carousel-control.next { right: 15px; }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .dot.active {
+    background: #a10000;
+    transform: scale(1.2);
+  }
+  
+  @media (max-width: 992px) {
+    .carousel-slide {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 576px) {
+    .carousel-slide {
+      grid-template-columns: 1fr;
+    }
+    .carousel-control {
+      width: 35px;
+      height: 35px;
+      font-size: 1.2rem;
+    }
+  }
+  /* Men's Health Success Stories */
+  .men-health-testimonials {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .health-card {
+    background: white;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    padding-top: 2.5rem !important;
+  }
+  
+  .health-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+  }
+  
+  .btn-primary {
+    background: #4e54c8;
+    border: none;
+    transition: all 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background: #3a3f9e;
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline-primary {
+    border: 2px solid #4e54c8;
+    color: #4e54c8;
+    transition: all 0.3s;
+  }
+  
+  .btn-outline-primary:hover {
+    background: #4e54c8;
+    color: white;
+  }
+  
+  .client-image img {
+    object-fit: cover;
+  }
+  
+  @media (max-width: 768px) {
+    .health-card {
+      margin-bottom: 2rem;
+    }
+    
+    .btn-lg {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .health-card {
+      padding-top: 2.8rem !important;
+    }
+    
+    .health-card span {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.75rem !important;
+    }
+  }

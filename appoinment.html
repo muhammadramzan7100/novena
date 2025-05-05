@@ -1,334 +1,797 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
-  <meta name="author" content="themefisher.com">
-
-  <title>Novena- Health & Care Medical template</title>
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
-  <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
+    <title>SAMC-samra Amin Medical Centre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icofont@1.0.1/icofont.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .time-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            margin: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            color: black;
+        }
+        
+        .available-badge {
+            border-color: #28a745 !important;
+            color: black;
+        }
+        
+        .booked-badge {
+            border-color: #dc3545 !important;
+            color: black;
+            cursor: not-allowed;
+        }
+        
+        .time-text {
+            margin-bottom: 3px;
+        }
+        .status-text {
+            font-size: 0.75rem;
+            font-weight: normal;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background-color: #f8f9fa;
+        }
+        
+        .available-badge .status-text {
+            color: white;
+            background-color: #28a745;
+        }
+        .booked-badge .status-text {
+            color: white;
+            background-color: #dc3545;
+        }
+        
+        .physical-badge {
+            border-color: #f44444;
+        }
+        .online-badge {
+            border-color: #f44444;
+        }
+        .time-badge:hover:not(.booked-badge) {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .online-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .online-card .card-header {
+            background-color: #f44444;
+            color: white;
+        }
+        .physical-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .physical-card .card-header {
+            background-color: #f44444;
+            color: rgb(8, 2, 2);
+        }
+        .slot-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            padding: 15px;
+        }
+        .online-card .slot-container {
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        }
+        @media (max-width: 768px) {
+            .slot-container {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            .online-card .slot-container {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            }
+            .time-badge {
+                height: 50px;
+                font-size: 0.9rem;
+            }
+        }
+        .time-slot {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        #confirmationMessage, #modalConfirmationMessage {
+            display: none;
+        }
+        
+        /* Modern Button Styles */
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-modern:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-modern-primary {
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+        }
+        
+        .btn-modern-primary:hover {
+            background: linear-gradient(135deg, #0b5ed7, #0a58ca);
+            color: white;
+        }
+        
+        .btn-modern-success {
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: white;
+        }
+        
+        .btn-modern-success:hover {
+            background: linear-gradient(135deg, #218838, #1e7e34);
+            color: white;
+        }
+        
+        .btn-modern::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn-modern:focus:not(:active)::after {
+            animation: ripple 0.6s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body id="top">
-
-<header>
-	<div class="header-top-bar">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6">
-					<ul class="top-bar-info list-inline-item pl-0 mb-0">
-						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@novena.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
-					</ul>
-				</div>
-				<div class="col-lg-6">
-					<div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-						<a href="tel:+23-345-67890" >
-							<span>Call Now : </span>
-							<span class="h4">823-4565-13456</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<nav class="navbar navbar-expand-lg navigation" id="navbar">
-		<div class="container">
-		 	 <a class="navbar-brand" href="index.html">
-			  	<img src="images/logo.png" alt="" class="img-fluid">
-			  </a>
-
-		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="icofont-navigation-menu"></span>
-		  </button>
-	  
-		  <div class="collapse navbar-collapse" id="navbarmain">
-			<ul class="navbar-nav ml-auto">
-			  <li class="nav-item active">
-				<a class="nav-link" href="index.html">Home</a>
-			  </li>
-			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
-
-			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="department.html">Departments</a></li>
-						<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
-					</ul>
-			  	</li>
-
-			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-						<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
-					</ul>
-			  	</li>
-
-			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
-
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-					</ul>
-			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-			</ul>
-		  </div>
-		</div>
-	</nav>
-</header>
-	
-
-
-<section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white">Book your Seat</span>
-          <h1 class="text-capitalize mb-5 text-lg">Appoinment</h1>
-
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">Book your Seat</a></li>
-          </ul> -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="appoinment section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-          <div class="mt-3">
-            <div class="feature-icon mb-3">
-              <i class="icofont-support text-lg"></i>
+    <!-- Header Section -->
+    <header class="custom-header py-2 border-bottom">
+        <div class="container d-flex justify-content-between align-items-center position-relative">
+            <div>
+                <a href="#" onclick="history.back();" class="text-decoration-none">
+                    <i class="bi bi-arrow-left-circle-fill fs-4 text-white"></i>
+                </a>
             </div>
-             <span class="h3">Call for an Emergency Service!</span>
-              <h2 class="text-color mt-3">+84 789 1256 </h2>
-          </div>
-      </div>
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <span class="text-white welcome-text">Welcome to SAMC</span>
+            </div>
+            <div style="width:32px;"></div>
+        </div>
+    </header>
 
-      <div class="col-lg-8">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-            <h2 class="mb-2 title-color">Book an appoinment</h2>
-            <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-               <form id="#" class="appoinment-form" method="post" action="#">
-                    <div class="row">
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Choose Department</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
+    <!-- Appointment Modal -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Book Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="appointmentFormModal">
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label>Full Name:</label>
+                                <input type="text" class="form-control" id="modalName" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label>Email:</label>
+                                <input type="email" class="form-control" id="modalEmail" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label>Phone Number:</label>
+                                <input type="text" class="form-control" id="modalPhone" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label>Profession:</label>
+                                <select class="form-control" id="modalProfession">
+                                    <option>Doctor</option>
+                                    <option>Engineer</option>
+                                    <option>Teacher</option>
+                                    <option>Student</option>
+                                    <option>Businessperson</option>
+                                    <option>Other</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
+                            <div class="col-md-6 mb-2">
+                                <label>Appointment Type:</label>
+                                <select class="form-control" id="modalAppointmentType" onchange="toggleModalFields()">
+                                    <option value="">Select type</option>
+                                    <option value="physical">Physical</option>
+                                    <option value="online">Online</option>
                                 </select>
                             </div>
-                        </div>
-
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
+                            <div class="col-md-6 mb-2">
+                                <label>Select Day:</label>
+                                <select class="form-control" id="modalDay" onchange="updateSlots('modal')">
+                                    <option value="">Select a day</option>
+                                    <option>Monday</option>
+                                    <option>Tuesday</option>
+                                    <option>Thursday</option>
+                                    <option>Friday</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-2" id="modalPhysicalTimeSlotContainer">
+                                <label>Time Slot:</label>
+                                <select class="form-control" id="modalTimeSlot">
+                                    <option value="" disabled selected>Select a day first</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-2 d-none" id="modalOnlineTimeSlotContainer">
+                                <label>Time Slot:</label>
+                                <select class="form-control" id="modalOnlineTimeSlot">
+                                    <option value="" disabled selected>Select a time</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mb-2" id="modalPaymentInfo">
+                                <h6>Payment Info (For Online Appointments)</h6>
+                                <p>Send payment to <strong>JazzCash: 03036390710</strong> (Muhammad Ramzan).</p>
+                                <label>Transaction ID:</label>
+                                <input type="text" class="form-control" id="modalTransactionId">
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number">
-                            </div>
-                        </div>
+                        <button type="button" class="btn-modern btn-modern-success mt-3 w-100" onclick="bookModalAppointment()">
+                            <i class="bi bi-calendar-check me-2"></i> Book Appointment
+                        </button>
+                    </form>
+                    <div id="modalConfirmationMessage" class="alert alert-success mt-3 d-none text-center">
+                        Appointment booked successfully!
                     </div>
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                    </div>
-
-                    <a class="btn btn-main btn-round-full" href="confirmation.html">Make Appoinment<i class="icofont-simple-right ml-2"></i></a>
-                </form>
+                </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
-</section>
 
+    <!-- Main Content -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Book an Appointment</h2>
+        
+        <div class="border rounded shadow-sm p-4 mx-auto mb-5" style="max-width:600px;">
+            <form id="appointmentForm">
+                <div class="mb-3">
+                    <label class="form-label">Appointment Type</label>
+                    <select class="form-control" id="appointmentType" onchange="toggleFormFields()" required>
+                        <option value="">Select type</option>
+                        <option value="physical">Physical</option>
+                        <option value="online">Online</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Profession</label>
+                    <select class="form-control" id="profession" required>
+                        <option value="">Select</option>
+                        <option>Doctor</option>
+                        <option>Engineer</option>
+                        <option>Teacher</option>
+                        <option>Student</option>
+                        <option>Businessperson</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                
+                <div id="physicalFields" class="d-none">
+                    <div class="mb-3">
+                        <label class="form-label">Select Day (Available: Mon, Tue, Thu, Fri)</label>
+                        <select class="form-control" id="day" onchange="updateSlots('page')">
+                            <option value="">Select a day</option>
+                            <option>Monday</option>
+                            <option>Tuesday</option>
+                            <option>Thursday</option>
+                            <option>Friday</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Available Time Slots (4:30 PM - 8:00 PM, 20 min slots)</label>
+                        <select class="form-control" id="timeSlot">
+                            <option value="" disabled selected>Select a day first</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="onlineFields" class="d-none">
+                    <div class="mb-3">
+                        <label class="form-label">Available Time Slots (1:00 PM - 3:30 PM, 20 min slots)</label>
+                        <select class="form-control" id="onlineTimeSlot">
+                            <option value="">Select a time slot</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <h5>Payment Info</h5>
+                        <p>Send payment to <strong>JazzCash: 03036390710</strong> (Muhammad Ramzan)</p>
+                        <label class="form-label">Transaction ID</label>
+                        <input type="text" class="form-control" id="transactionId">
+                        <div id="paymentError" class="text-danger d-none mt-1">
+                            Transaction ID must be at least 10 characters.
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-modern btn-modern-primary w-100">
+                    <i class="bi bi-calendar-plus me-2"></i> Book Appointment
+                </button>
+            </form>
+            
+            <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center"></div>
+        </div>
+    </div>
 
-<!-- footer Start -->
-<footer class="footer section gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 mr-auto col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<div class="logo mb-4">
-						<img src="images/logo.png" alt="" class="img-fluid">
-					</div>
-					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
+    <!-- Available Times Section -->
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Available Appointment Times</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="availableTimesDisplay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Department</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Surgery </a></li>
-						<li><a href="#">Wome's Health</a></li>
-						<li><a href="#">Radiology</a></li>
-						<li><a href="#">Cardioc</a></li>
-						<li><a href="#">Medicine</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Support</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Terms & Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Company Support </a></li>
-						<li><a href="#">FAQuestions</a></li>
-						<li><a href="#">Company Licence</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="widget widget-contact mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Get in Touch</h4>
-					<div class="divider mb-4"></div>
-
-					<div class="footer-contact-block mb-4">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-email mr-3"></i>
-							<span class="h6 mb-0">Support Available for 24/7</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
-					</div>
-
-					<div class="footer-contact-block">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-support mr-3"></i>
-							<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="footer-btm py-4 mt-5">
-			<div class="row align-items-center justify-content-between">
-				<div class="col-lg-6">
-					<div class="copyright">
-						&copy; Copyright Reserved to <span class="text-color">Novena</span> by <a href="https://themefisher.com/" target="_blank">Themefisher</a>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-						<form action="#" class="subscribe">
-							<input type="text" class="form-control" placeholder="Your Email address">
-							<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
-						</form>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-					<a class="backtop js-scroll-trigger" href="#top">
-						<i class="icofont-long-arrow-up"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-   
-
-    <!-- 
-    Essential Scripts
-    =====================================-->
-
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Main jQuery -->
-    <script src="plugins/jquery/jquery.js"></script>
-    <!-- Bootstrap 4.3.2 -->
-    <script src="plugins/bootstrap/js/popper.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/counterup/jquery.easing.js"></script>
-    <!-- Slick Slider -->
-    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-    <!-- Counterup -->
-    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
-    
-    <script src="plugins/shuffle/shuffle.min.js"></script>
-    <script src="plugins/counterup/jquery.counterup.min.js"></script>
-    <!-- Google Map -->
-    <script src="plugins/google-map/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
-    
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
-
-  </body>
-  </html>
+    <script>
+        const availableDays = ["Monday", "Tuesday", "Thursday", "Friday"];
+        let bookedAppointments = {};
+        
+        function initializeBookedAppointments() {
+            bookedAppointments = {
+                "Monday": ["04:30 PM", "05:10 PM"],
+                "Tuesday": ["04:30 PM"],
+                "Thursday": ["06:30 PM", "07:10 PM"],
+                "Friday": [],
+                "Online": ["01:15 PM", "02:45 PM"]
+            };
+            displayAvailableTimes();
+            generateOnlineTimeSlots();
+        }
+        
+        function generatePhysicalTimeSlots() {
+            let slots = [];
+            let startTime = new Date();
+            startTime.setHours(16, 30, 0);
+            let endTime = new Date();
+            endTime.setHours(20, 0, 0);
+            
+            while (startTime < endTime) {
+                slots.push(startTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: true}));
+                startTime.setMinutes(startTime.getMinutes() + 20);
+            }
+            return slots;
+        }
+        
+        function generateOnlineTimeSlots() {
+            let slots = [];
+            let startTime = new Date();
+            startTime.setHours(13, 0, 0);
+            let endTime = new Date();
+            endTime.setHours(15, 30, 0);
+            
+            while (startTime < endTime) {
+                slots.push(startTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: true}));
+                startTime.setMinutes(startTime.getMinutes() + 20);
+            }
+            
+            const onlineTimeSlot = document.getElementById("onlineTimeSlot");
+            const modalOnlineTimeSlot = document.getElementById("modalOnlineTimeSlot");
+            onlineTimeSlot.innerHTML = "";
+            modalOnlineTimeSlot.innerHTML = "";
+            
+            let bookedOnlineSlots = bookedAppointments["Online"] || [];
+            
+            slots.forEach(slot => {
+                if (!bookedOnlineSlots.includes(slot)) {
+                    let option = document.createElement("option");
+                    option.value = slot;
+                    option.textContent = slot;
+                    onlineTimeSlot.appendChild(option.cloneNode(true));
+                    modalOnlineTimeSlot.appendChild(option.cloneNode(true));
+                }
+            });
+            
+            if (onlineTimeSlot.options.length === 0) {
+                onlineTimeSlot.innerHTML = `<option value="" disabled>No available online slots</option>`;
+                modalOnlineTimeSlot.innerHTML = `<option value="" disabled>No available online slots</option>`;
+            }
+        }
+        
+        function updateSlots(source) {
+            let dayId = source === 'modal' ? 'modalDay' : 'day';
+            let timeSlotId = source === 'modal' ? 'modalTimeSlot' : 'timeSlot';
+            let day = document.getElementById(dayId).value;
+            let slotDropdown = document.getElementById(timeSlotId);
+            slotDropdown.innerHTML = "";
+            
+            if (!day) {
+                slotDropdown.innerHTML = `<option value="" disabled selected>Select a day first</option>`;
+                return;
+            }
+            
+            if (!availableDays.includes(day)) {
+                slotDropdown.innerHTML = `<option value="" disabled>No slots available</option>`;
+                return;
+            }
+            
+            let allSlots = generatePhysicalTimeSlots();
+            let bookedSlots = bookedAppointments[day] || [];
+            let availableSlots = allSlots.filter(slot => !bookedSlots.includes(slot));
+            
+            if (availableSlots.length === 0) {
+                slotDropdown.innerHTML = `<option value="" disabled>No available slots for ${day}</option>`;
+                return;
+            }
+            
+            let defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "Select a time slot";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            slotDropdown.appendChild(defaultOption);
+            
+            availableSlots.forEach(slot => {
+                let option = document.createElement("option");
+                option.value = slot;
+                option.textContent = slot;
+                slotDropdown.appendChild(option);
+            });
+        }
+        
+        function displayAvailableTimes() {
+            const container = document.getElementById("availableTimesDisplay");
+            container.innerHTML = "";
+            
+            availableDays.forEach(day => {
+                const dayCol = document.createElement("div");
+                dayCol.className = "col-md-6 mb-4";
+                
+                const dayCard = document.createElement("div");
+                dayCard.className = "card h-100 physical-card";
+                
+                const cardHeader = document.createElement("div");
+                cardHeader.className = "card-header";
+                cardHeader.innerHTML = `<h5>Physical - ${day}</h5><small>4:30 PM - 8:00 PM (20 min slots)</small>`;
+                
+                const cardBody = document.createElement("div");
+                cardBody.className = "card-body";
+                
+                const slotContainer = document.createElement("div");
+                slotContainer.className = "slot-container";
+                
+                const allSlots = generatePhysicalTimeSlots();
+                const bookedSlots = bookedAppointments[day] || [];
+                
+                allSlots.forEach(slot => {
+                    const isBooked = bookedSlots.includes(slot);
+                    const badge = document.createElement("div");
+                    badge.className = `time-badge physical-badge ${isBooked ? 'booked-badge' : 'available-badge'}`;
+                    
+                    const timeText = document.createElement("div");
+                    timeText.className = "time-text";
+                    timeText.textContent = slot;
+                    
+                    const statusText = document.createElement("div");
+                    statusText.className = "status-text";
+                    statusText.textContent = isBooked ? "Booked" : "Available";
+                    
+                    badge.appendChild(timeText);
+                    badge.appendChild(statusText);
+                    
+                    if (!isBooked) {
+                        badge.onclick = function() {
+                            document.getElementById("appointmentType").value = "physical";
+                            document.getElementById("day").value = day;
+                            toggleFormFields();
+                            document.getElementById("timeSlot").value = slot;
+                        };
+                    }
+                    
+                    slotContainer.appendChild(badge);
+                });
+                
+                cardBody.appendChild(slotContainer);
+                dayCard.appendChild(cardHeader);
+                dayCard.appendChild(cardBody);
+                dayCol.appendChild(dayCard);
+                container.appendChild(dayCol);
+            });
+            
+            const onlineCol = document.createElement("div");
+            onlineCol.className = "col-md-12 mb-4";
+            
+            const onlineCard = document.createElement("div");
+            onlineCard.className = "card h-100 online-card";
+            
+            const onlineHeader = document.createElement("div");
+            onlineHeader.className = "card-header";
+            onlineHeader.innerHTML = `<h4>Online Appointments</h4><small>1:00 PM - 3:30 PM (20 min slots)</small>`;
+            
+            const onlineBody = document.createElement("div");
+            onlineBody.className = "card-body";
+            
+            const onlineSlotContainer = document.createElement("div");
+            onlineSlotContainer.className = "slot-container";
+            
+            const onlineSlots = [];
+            let onlineStartTime = new Date();
+            onlineStartTime.setHours(13, 0, 0);
+            let onlineEndTime = new Date();
+            onlineEndTime.setHours(15, 30, 0);
+            
+            while (onlineStartTime < onlineEndTime) {
+                onlineSlots.push(onlineStartTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: true}));
+                onlineStartTime.setMinutes(onlineStartTime.getMinutes() + 20);
+            }
+            
+            const bookedOnlineSlots = bookedAppointments["Online"] || [];
+            
+            onlineSlots.forEach(slot => {
+                const isBooked = bookedOnlineSlots.includes(slot);
+                const badge = document.createElement("div");
+                badge.className = `time-badge online-badge ${isBooked ? 'booked-badge' : 'available-badge'}`;
+                
+                const timeText = document.createElement("div");
+                timeText.className = "time-text";
+                timeText.textContent = slot;
+                
+                const statusText = document.createElement("div");
+                statusText.className = "status-text";
+                statusText.textContent = isBooked ? "Booked" : "Available";
+                
+                badge.appendChild(timeText);
+                badge.appendChild(statusText);
+                
+                if (!isBooked) {
+                    badge.onclick = function() {
+                        document.getElementById("appointmentType").value = "online";
+                        toggleFormFields();
+                        document.getElementById("onlineTimeSlot").value = slot;
+                    };
+                }
+                
+                onlineSlotContainer.appendChild(badge);
+            });
+            
+            onlineBody.appendChild(onlineSlotContainer);
+            onlineCard.appendChild(onlineHeader);
+            onlineCard.appendChild(onlineBody);
+            onlineCol.appendChild(onlineCard);
+            container.appendChild(onlineCol);
+        }
+        
+        function toggleFormFields() {
+            const type = document.getElementById("appointmentType").value;
+            document.getElementById("physicalFields").classList.add("d-none");
+            document.getElementById("onlineFields").classList.add("d-none");
+            
+            if (type === "physical") {
+                document.getElementById("physicalFields").classList.remove("d-none");
+            } else if (type === "online") {
+                document.getElementById("onlineFields").classList.remove("d-none");
+            }
+        }
+        
+        function toggleModalFields() {
+            const type = document.getElementById("modalAppointmentType").value;
+            document.getElementById("modalPhysicalTimeSlotContainer").classList.add("d-none");
+            document.getElementById("modalOnlineTimeSlotContainer").classList.add("d-none");
+            document.getElementById("modalPaymentInfo").classList.add("d-none");
+            
+            if (type === "physical") {
+                document.getElementById("modalPhysicalTimeSlotContainer").classList.remove("d-none");
+            } else if (type === "online") {
+                document.getElementById("modalOnlineTimeSlotContainer").classList.remove("d-none");
+                document.getElementById("modalPaymentInfo").classList.remove("d-none");
+            }
+        }
+        
+        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const type = document.getElementById("appointmentType").value;
+            const name = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const profession = document.getElementById("profession").value;
+            const confirmation = document.getElementById("confirmationMessage");
+            
+            if (type === "physical") {
+                const day = document.getElementById("day").value;
+                const timeSlot = document.getElementById("timeSlot").value;
+                
+                if (!day || !timeSlot) {
+                    alert("Please select day and time slot.");
+                    return;
+                }
+                
+                if (!bookedAppointments[day]) bookedAppointments[day] = [];
+                
+                if (bookedAppointments[day].includes(timeSlot)) {
+                    alert("Slot already booked. Please choose another.");
+                    return;
+                }
+                
+                bookedAppointments[day].push(timeSlot);
+                confirmation.classList.remove("d-none");
+                confirmation.innerHTML = `<strong>${name}</strong>, your <b>physical</b> appointment is confirmed.<br><span class="time-slot">${day} at ${timeSlot} (15-20 minute session)</span>`;
+                
+                updateSlots('page');
+                displayAvailableTimes();
+                
+            } else if (type === "online") {
+                const timeSlot = document.getElementById("onlineTimeSlot").value;
+                const transactionId = document.getElementById("transactionId").value.trim();
+                
+                if (!timeSlot) {
+                    alert("Please select a time slot.");
+                    return;
+                }
+                
+                if (transactionId.length < 10) {
+                    document.getElementById("paymentError").classList.remove("d-none");
+                    return;
+                }
+                
+                document.getElementById("paymentError").classList.add("d-none");
+                
+                if (!bookedAppointments["Online"]) bookedAppointments["Online"] = [];
+                
+                if (bookedAppointments["Online"].includes(timeSlot)) {
+                    alert("Slot already booked. Please choose another.");
+                    return;
+                }
+                
+                bookedAppointments["Online"].push(timeSlot);
+                confirmation.classList.remove("d-none");
+                confirmation.innerHTML = `<strong>${name}</strong>, your <b>online</b> appointment is confirmed.<br><span class="time-slot">${timeSlot} (15-20 minute session)</span><br>Transaction ID: ${transactionId}`;
+                
+                generateOnlineTimeSlots();
+                displayAvailableTimes();
+                
+            } else {
+                alert("Please select an appointment type.");
+            }
+        });
+        
+        function bookModalAppointment() {
+            const type = document.getElementById("modalAppointmentType").value;
+            const name = document.getElementById("modalName").value.trim();
+            const email = document.getElementById("modalEmail").value.trim();
+            const phone = document.getElementById("modalPhone").value.trim();
+            const profession = document.getElementById("modalProfession").value;
+            const confirmation = document.getElementById("modalConfirmationMessage");
+            
+            if (type === "physical") {
+                const day = document.getElementById("modalDay").value;
+                const timeSlot = document.getElementById("modalTimeSlot").value;
+                
+                if (!day || !timeSlot || timeSlot === "Select a time slot") {
+                    alert("Please select a day and time slot.");
+                    return;
+                }
+                
+                if (!bookedAppointments[day]) bookedAppointments[day] = [];
+                
+                if (bookedAppointments[day].includes(timeSlot)) {
+                    alert("Slot already booked. Choose another.");
+                    return;
+                }
+                
+                bookedAppointments[day].push(timeSlot);
+                confirmation.classList.remove("d-none");
+                confirmation.innerHTML = `<strong>${name}</strong>, your <b>physical</b> appointment is confirmed.<br><span class="time-slot">${day} at ${timeSlot} (15-20 minute session)</span>`;
+                
+                updateSlots('modal');
+                displayAvailableTimes();
+                
+            } else if (type === "online") {
+                const timeSlot = document.getElementById("modalOnlineTimeSlot").value;
+                const transactionId = document.getElementById("modalTransactionId").value.trim();
+                
+                if (!timeSlot || timeSlot === "Select a time") {
+                    alert("Please select a time slot.");
+                    return;
+                }
+                
+                if (transactionId.length < 10) {
+                    alert("Transaction ID must be at least 10 characters.");
+                    return;
+                }
+                
+                if (!bookedAppointments["Online"]) bookedAppointments["Online"] = [];
+                
+                if (bookedAppointments["Online"].includes(timeSlot)) {
+                    alert("Slot already booked. Choose another.");
+                    return;
+                }
+                
+                bookedAppointments["Online"].push(timeSlot);
+                confirmation.classList.remove("d-none");
+                confirmation.innerHTML = `<strong>${name}</strong>, your <b>online</b> appointment is confirmed.<br><span class="time-slot">${timeSlot} (15-20 minute session)</span><br>Transaction ID: ${transactionId}`;
+                
+                generateOnlineTimeSlots();
+                displayAvailableTimes();
+                
+            } else {
+                alert("Please select an appointment type.");
+            }
+        }
+        
+        window.onload = function() {
+            initializeBookedAppointments();
+            toggleModalFields();
+        };
+    </script>
+</body>
+</html>

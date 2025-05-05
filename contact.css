@@ -1,0 +1,179 @@
+  .contact-block {
+    background: #ffffff;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 220px;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .contact-block:hover {
+    transform: translateY(-10px);
+    background-color: #f0f8ff;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #a10000; /* Original Background Color */
+    margin: 0 auto 10px;
+  }
+
+  .icon-inside {
+    font-size: 2.5rem;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .icon-wrapper:hover .icon-inside {
+    transform: scale(1.2);
+    color: #1abc9c;
+  }
+
+  .contact-block h5 {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Custom Colors */
+  .phone-number-1 {
+    color: #3498db; /* Blue */
+    font-weight: 600;
+  }
+
+  .phone-number-2 {
+    color: #e74c3c; /* Red */
+    font-weight: 600;
+  }
+
+  .email-1 {
+    color: #8e44ad; /* Purple */
+    font-weight: 600;
+  }
+
+  .email-2 {
+    color: #f39c12; /* Orange */
+    font-weight: 600;
+  }
+
+  .location {
+    color: #27ae60; /* Green */
+    font-weight: 600;
+  }
+
+  /* Hover underline animation */
+  .hover-underline {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .hover-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .contact-block {
+      max-width: 100%;
+      margin: 0 auto 1.5rem;
+      min-height: 200px;
+    }
+
+    .icon-inside {
+      font-size: 2.25rem;
+    }
+
+    .contact-block h5 {
+      font-size: 1.35rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-block {
+      padding: 1.25rem;
+      min-height: 180px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .contact-block {
+      width: 100%;
+      padding: 1rem;
+      min-height: auto;
+    }
+
+    .icon-inside {
+      font-size: 1.8rem;
+    }
+
+    .contact-block h5 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Contact page adjustments */
+  .appointment-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .appointment-form {
+    width: 50%;
+    padding: 20px;
+    height: 450px; /* Same height for both forms */
+    overflow-y: auto;
+  }
+
+  @media (max-width: 768px) {
+    .appointment-form {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+  /* Location session */
+  .location-section {
+    background-color: #f8f9fa; /* Light Gray Background */
+  }
+  
+  .map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(222, 21, 21, 0.1);
+  }
+  

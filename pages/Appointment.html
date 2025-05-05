@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic</title>
+  <!-- Add Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/icofont@1.0.0/icofont.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Your Navbar with the Book Appointment button -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container d-flex justify-content-between">
+      <a class="navbar-brand" href="index.html">
+        <img src="./images/about/WhatsApp Image 2025-03-24 at 22.41.34_189cd182.jpg" alt="Logo" class="img-fluid" style="width: 100px; height: 50px;">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarmain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <!-- Book Appointment inside Navbar -->
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#appointmentModal">Book Appointment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal will be loaded from external file -->
+  <div id="modal-container"></div>
+<!-- Appointment Modal -->
+<div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="appointmentModalLabel">Book Appointment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="appointmentForm">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <label for="name">Full Name:</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="phone">Phone Number:</label>
+                <input type="text" class="form-control" id="phone" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="profession">Profession:</label>
+                <select class="form-control" id="profession">
+                  <option>Doctor</option>
+                  <option>Engineer</option>
+                  <option>Teacher</option>
+                  <option>Student</option>
+                  <option>Businessperson</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="day">Select Day:</label>
+                <select class="form-control" id="day" onchange="updateSlots()">
+                  <option>Select a day</option>
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="timeSlot">Time Slot:</label>
+                <select class="form-control" id="timeSlot">
+                  <option disabled>Select a day first</option>
+                </select>
+              </div>
+              <div class="col-md-12 mb-2">
+                <h6>Payment Info (For Online Appointments)</h6>
+                <p>Send payment to <strong>JazzCash: 03036390710</strong> (Muhammad Ramzan).</p>
+                <label for="transactionId">Transaction ID:</label>
+                <input type="text" class="form-control" id="transactionId">
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-3 w-100" onclick="bookAppointment()">Book Appointment</button>
+          </form>
+          <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center">
+            Appointment booked successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Include Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Load external modal -->
+  <script>
+    fetch('appointment-modal.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('modal-container').innerHTML = data;
+      });
+  </script>
+<script>
+  const availableDays = ["Monday", "Tuesday", "Thursday", "Friday"];
+  let bookedAppointments = {};
+
+  function generateTimeSlots() {
+    let slots = [];
+    let startTime = new Date();
+    startTime.setHours(16, 30, 0);
+    let endTime = new Date();
+    endTime.setHours(20, 0, 0);
+    while (startTime < endTime) {
+      let time = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      slots.push(time);
+      startTime.setMinutes(startTime.getMinutes() + 20);
+    }
+    return slots;
+  }
+
+  function updateSlots() {
+    let day = document.getElementById("day").value;
+    let slotDropdown = document.getElementById("timeSlot");
+    slotDropdown.innerHTML = "";
+    if (!availableDays.includes(day)) {
+      slotDropdown.innerHTML = `<option disabled>No slots available</option>`;
+      return;
+    }
+    let allSlots = generateTimeSlots();
+    let bookedSlots = bookedAppointments[day] || [];
+    let availableSlots = allSlots.filter(slot => !bookedSlots.includes(slot));
+    availableSlots.forEach(slot => {
+      let option = document.createElement("option");
+      option.value = slot;
+      option.textContent = slot;
+      slotDropdown.appendChild(option);
+    });
+  }
+
+  function bookAppointment() {
+    let name = document.getElementById("name").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let day = document.getElementById("day").value;
+    let timeSlot = document.getElementById("timeSlot").value;
+    let transactionId = document.getElementById("transactionId").value.trim();
+
+    if (!name || !phone || !email || !day || !timeSlot) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    if (transactionId && transactionId.length < 10) {
+      alert("Please enter a valid Transaction ID.");
+      return;
+    }
+
+    if (!bookedAppointments[day]) {
+      bookedAppointments[day] = [];
+    }
+
+    if (bookedAppointments[day].includes(timeSlot)) {
+      alert("This time slot is already booked.");
+      return;
+    }
+
+    bookedAppointments[day].push(timeSlot);
+
+    document.getElementById("confirmationMessage").classList.remove("d-none");
+    document.getElementById("confirmationMessage").innerHTML = `
+      <div class="alert alert-success">
+        Appointment booked for <b>${name}</b> on <b>${day}</b> at <b>${timeSlot}</b>.
+      </div>
+    `;
+
+    setTimeout(() => {
+      document.getElementById("appointmentForm").reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('appointmentModal'));
+      modal.hide();
+    }, 2000);
+  }
+</script>
+</body>
+</html>

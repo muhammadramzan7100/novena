@@ -1,0 +1,556 @@
+/* dr 1st profile and data with img */
+.doctor-profile {
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-image-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 500px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.profile-image-container:hover {
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.profile-image {
+    background: url("./images/img/WhatsApp\ Image\ 2025-05-01\ at\ 19.23.12_b2a9106e.jpg") no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.profile-content {
+    position: relative;
+    z-index: 2;
+}
+
+.specialty-tag {
+    display: inline-block;
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.doctor-name {
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #1976d2, #64b5f6);
+    margin: 20px 0;
+    border-radius: 3px;
+}
+
+.profile-details p {
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 16px;
+}
+
+.profile-details i {
+    color: #1976d2;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.btn-appointment {
+    background: #1976d2;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-appointment:hover {
+    background: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+}
+
+.btn-consultation {
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-consultation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.quick-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.info-item:hover {
+    background-color: rgba(18, 101, 184, 0.05);
+}
+
+.info-item i {
+    margin-right: 8px;
+    color: #1976d2;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .doctor-name {
+        font-size: 2.2rem;
+    }
+    .profile-image-container {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        text-align: center;
+        padding-top: 30px;
+    }
+    .divider {
+        margin: 20px auto;
+    }
+    .action-buttons {
+        justify-content: center;
+    }
+    .quick-info {
+        justify-content: center;
+    }
+    .profile-image-container {
+        height: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .doctor-name {
+        font-size: 1.8rem;
+    }
+    .action-buttons {
+        flex-direction: column;
+    }
+    .btn-consultation {
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+    .profile-image-container {
+        height: 350px;
+    }
+    .info-item {
+        font-size: 13px;
+    }
+}
+.features-section {
+  background-color: #fff5f5;
+}
+
+.feature-item {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+  height: 100%; /* Equal height for all boxes */
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Online Consultation Section Styling */
+.feature-item.fixed-height p {
+  color: #6c757d; /* New paragraph color */
+  transition: color 0.3s ease;
+}
+
+.feature-item.fixed-height p:hover {
+  color: #a10000; /* Red color on hover */
+}
+
+/* Clinic Hours Section Styling */
+.w-hours li {
+  color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.w-hours li span {
+  color: #a10000; /* Red color for timings */
+  font-weight: 500;
+}
+
+.w-hours li:hover {
+  color: #a10000;
+  transform: translateX(5px);
+}
+
+/* Contact Info Section Styling */
+.feature-item h5 {
+  color: #a10000; /* Red color for phone numbers */
+  transition: color 0.3s ease;
+}
+
+.feature-item h5:hover {
+  color: #7a0000; /* Darker red on hover */
+}
+
+.feature-item:last-child p {
+  color: #6c757d;
+  transition: color 0.3s ease;
+}
+
+.feature-item:last-child p:hover {
+  color: #a10000;
+}
+
+/* Common Styling */
+.feature-icon i {
+  font-size: 48px;
+  color: #a10000;
+  transition: color 0.3s ease;
+}
+
+.feature-item h4 {
+  color: #a10000;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.feature-item h4:hover {
+  color: #7a0000;
+}
+
+.btn-main {
+  background-color: #a10000;
+  border: none;
+  color: #fff;
+  padding: 8px 20px; /* Smaller button size */
+  font-size: 14px; /* Smaller text */
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  display: inline-block; /* Ensure center alignment */
+  margin: 0 auto; /* Center button */
+}
+
+.btn-main:hover {
+  background-color: #7a0000;
+  transform: scale(1.05);
+}
+
+/* Clinic Hours Specific */
+.feature-item h5.mb-3 {
+  color: #6c757d; /* Original subtitle color */
+  transition: color 0.3s ease;
+}
+
+.feature-item h5.mb-3:hover {
+  color: #a10000;
+}
+/* Specialized Care in Andrology & Male Health */
+.about-img-sm {
+  width: 45%;
+  transition: transform 0.3s ease;
+}
+.about-img-lg {
+  width: 90%;
+  transition: transform 0.3s ease;
+}
+.about-img-sm:hover,
+.about-img-lg:hover {
+  transform: scale(1.03);
+}
+
+.animate-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.btn{
+  background-color: #a10000;
+  color: #fff;
+
+}
+.btn-hover:hover {
+  background-color: white;
+  color:black;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.highlight-word {
+  color: #a10000;
+  font-weight: 600;
+}
+/* Patients Treated */
+.counter-box {
+  background-color: #fff5f5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+.counter-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.counter-icon {
+  font-size: 40px;
+  color: #a10000;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.counter-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  display: inline-block;
+}
+
+.counter-unit {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #a10000;
+  margin-left: 4px;
+}
+
+.counter-label {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.counter-label small {
+  font-size: 0.8rem;
+  color: #777;
+}
+/*our Specialized Services*/
+.section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.service-item {
+  background-color: #fff;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-item .icon {
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.service-item h5 {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.service-item p {
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.service-item p .text-danger {
+  color: #a10000;
+}
+
+@media (max-width: 767px) {
+  .service-item p {
+    font-size: 0.85rem;
+  }
+}
+
+.text-primary {
+  color: #a10000 !important;
+}
+
+.text-muted {
+  color: #555 !important;
+}
+/* Dr Image Section with Appintment input*/
+.appoinment-wrap {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+
+.title-color {
+  color: #a10000;
+  font-weight: 700;
+}
+
+.text-primary {
+  color: #a10000 !important;
+}
+
+.text-danger {
+  color: #d00000 !important;
+}
+
+.btn-main {
+  width: 170px;
+  background-color: #a10000;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn-main:hover {
+  background-color: #7e0000;
+  color: #fff;
+}
+
+
+.form-control {
+  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  transition: 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #a10000;
+  box-shadow: 0 0 5px rgba(161, 0, 0, 0.3);
+}
+/* Providing Expert Care in Men's Health */
+  .testimonial-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .testimonial-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1) !important;
+    border-color: rgba(220, 53, 69, 0.2);
+  }
+  
+  .quote-icon {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-card:hover .quote-icon {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  
+  .testimonial-footer {
+    font-style: italic;
+  }
+  
+  .divider {
+    background: linear-gradient(90deg, rgba(220,53,69,1) 0%, rgba(220,53,69,0.5) 100%);
+  }
+  
+  @media (max-width: 767.98px) {
+    .testimonial-card {
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+  }
+  /* Expert Care in Men's Health */
+  .testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(220, 53, 69, 0.1);
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15)!important;
+  }
+  
+  .divider {
+    width: 100px;
+    height: 3px;
+    background-color: #dc3545;
+    margin: 1.5rem auto;
+  }
+  
+  .quote-icon {
+    opacity: 0.7;
+  }
+  
+  @media (max-width: 768px) {
+    .display-5 {
+      font-size: 2rem;
+    }
+    
+    .lead {
+      font-size: 1rem;
+    }
+  }
