@@ -1,68 +1,219 @@
-/* profile about  */
-  .line {
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, #8B0000, #FF4444);
-    border-radius: 2px;
-    margin: 1.5rem auto;
-    margin: 20px;
-  }
+/* Profile About Section Styles */
+.profile-section {
+  padding: 30px 0;
+}
+
+.profile-header {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #8B0000;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+/* Line above the image */
+.top-line {
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(to right, #8B0000, #FF4444);
+  border-radius: 2px;
+  margin: 0 auto 25px;
+}
+
+.doctor-name {
+  color: #8B0000;
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-family: 'Georgia', serif;
+}
+
+.doctor-specialty {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; /* Changed from wrap to nowrap to prevent wrapping */
+  gap: 20px;
+  margin-bottom: 30px;
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  padding-bottom: 10px; /* Space for scroll if it appears */
+}
+
+.stat-item {
+  text-align: center;
+  min-width: 100px;
+  flex-shrink: 0; /* Prevents items from shrinking */
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #8B0000;
+  font-weight: 500;
+}
+
+.divider {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent 0%, #8B0000 50%, transparent 100%);
+  flex-shrink: 0; /* Prevents divider from shrinking */
+}
+
+/* Line below stats and above reviews */
+.middle-line {
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(to right, #8B0000, #FF4444);
+  border-radius: 2px;
+  margin: 0 auto 25px;
+}
+
+/* Reviews Section Styles */
+.reviews-section {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.review-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #8B0000, #FF4444);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 auto 10px;
+}
+
+.review-label {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.progress-item {
+  margin-bottom: 15px;
+}
+
+.progress-category {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.category-name {
+  color: #333;
+  font-weight: 500;
+}
+
+.category-percent {
+  color: #8B0000;
+  font-weight: 600;
+}
+
+.progress {
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(to right, #8B0000, #FF4444);
+}
+
+/* Responsive Adjustments - Modified to keep stats visible */
+@media (max-width: 768px) {
   .profile-img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border: 3px solid #8B0000;
-    box-shadow: 0 0.5rem 1rem rgba(139, 0, 0, 0.15) !important;
+    width: 120px;
+    height: 120px;
   }
   
-  .divider {
-    width: 2px;
-    height: 50px;
-    background: linear-gradient(to bottom, transparent 0%, #8B0000 50%, transparent 100%);
-    margin: 0 15px;
-  } 
+  .stat-item {
+    min-width: 90px; /* Slightly reduced but still visible */
+  }
+  
+  .stat-value {
+    font-size: 18px;
+  }
+  
+  .stat-label {
+    font-size: 13px;
+  }
   
   .review-circle {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    font-size: 1.4rem;
-    font-weight: 600;
-    background: linear-gradient(45deg, #8B0000, #FF4444);
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+  }
+
+  .top-line, .middle-line {
+    width: 70%;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-img {
+    width: 100px;
+    height: 100px;
   }
   
-  .bg-gradient-primary {
-    background: linear-gradient(45deg, #8B0000, #FF4444);
+  .doctor-name {
+    font-size: 24px;
   }
   
-  @media (max-width: 768px) {
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-width: 2px;
-    }
-  
-    .review-circle {
-      width: 80px;
-      height: 80px;
-      font-size: 1.2rem;
-    }
-  
-    h3.display-6 {
-      font-size: 1.8rem;
-    }
+  .doctor-specialty {
+    font-size: 16px;
   }
   
-  @media (max-width: 576px) {
-    .line {
-      width: 60%;
-    }
-    
-    .profile-img {
-      width: 100px;
-      height: 100px;
-    }
+  .stats-container {
+    gap: 10px; /* Reduced gap but still visible */
   }
+  
+  .stat-item {
+    min-width: 80px; /* Minimum width to keep content visible */
+  }
+  
+  .stat-value {
+    font-size: 16px;
+  }
+  
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .top-line, .middle-line {
+    width: 80%;
+    height: 2px;
+  }
+}
     /* vedio slider */
   .video-carousel-container {
     max-width: 1200px;

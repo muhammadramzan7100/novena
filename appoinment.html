@@ -191,6 +191,49 @@
             }
         }
     </style>
+    <style>
+        /* Header Styles */
+        .custom-header {
+            background-color: #a41e06; /* SAMC red color */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .welcome-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Disable responsive behavior */
+        html, body {
+            min-width: 1200px;
+            overflow-x: auto;
+        }
+        
+        /* Rest of your existing styles... */
+        .time-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px; /* Fixed width */
+            height: 60px; /* Fixed height */
+            margin: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            color: black;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        
+        /* ... rest of your existing CSS ... */
+    </style>
 </head>
 
 <body id="top">

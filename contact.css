@@ -1,4 +1,4 @@
-  .contact-block {
+.contact-block {
     background: #ffffff;
     transition: all 0.3s ease;
     height: 100%;
@@ -176,4 +176,3 @@
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(222, 21, 21, 0.1);
   }
-  

@@ -1,7 +1,7 @@
 
-/* Microvaricocelectomy Section */
-  .benefit-item:hover {
-    color: #a10000;
-    text-decoration: underline;
-    transition: all 0.3s ease;
-  }
+  /* img section */
+  .cta-page {
+    background: url("../images/bg/banner.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+}
